@@ -1,0 +1,80 @@
+{% extends 'Account/base.html' %}
+{% block body %}
+	<div class="userlist_body">
+		<form method="POST">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td><label for="captcha" class="captcha btn btn-outline-light btn-lg">First Name</label></td>
+					<td><input class="input" type="text" name="first_name"  required></td>
+				</tr>
+				
+				<tr>
+					<td><label for="username" class="captcha username btn btn-outline-light btn-lg">Last Name</label></td>
+					<td><input class="input" type="text" name="last_name"  required></td>
+				</tr>
+				<tr>
+					<td><label for="Account" class="captcha text btn btn-outline-light btn-lg">Email</label></td>
+					<td><input class="input" type="email" name="email" required></td>
+				</tr>
+				<tr>
+					<td><label for="Remarks" class="captcha text btn btn-outline-light btn-lg">Password</label></td>
+					<td><input class="input" type="Password" name="password" required=""></td>
+				</tr>
+				
+				<tr>
+					<td><label for="Money" class="captcha text btn btn-outline-light btn-lg">Date of Joining</label></td>
+					<td><input class="input" type="date" name="date_of_join" required></td>
+				</tr>
+				<tr>
+					<td><label for="Money" class="captcha text btn btn-outline-light btn-lg">Position</label></td>
+					<td>
+						<select name="superuser" class="captcha">
+							
+							<option value="Admin" class="input">Admin</option>
+							<option value="Staff" class="input">Staff</option>
+						</select>
+					</td>
+				</tr>
+
+				
+			</table>
+
+			<button type="submit" class="submit btn btn-success btn-outline-light btn-lg" value="Select" >Create User</button>
+			
+		</form>
+		<h1 id='errpython mor'>{{error}}</h1>
+	</div>
+{% endblock %}
+<style type="text/css">
+	{% block styling %}
+		.submit{
+			font-size: 1.8rem;
+			margin-top: 1rem;
+			margin-left: 1rem; 
+		}
+		.captcha{
+			font-size: 1.8rem;
+			margin: 1rem;
+		}
+		.input{
+			font-size: 1.8rem;
+			margin: 1rem;
+		}
+		.userlist_body{
+			width: 100%;
+			max-width: 100%;
+			position: absolute;
+			margin-left: 4.5rem;
+			top: 7%;
+			color: red;
+			font-weight: 70;
+			
+			z-index: 1;
+		}
+		.home-inner{
+			background-image: url(https://images8.alphacoders.com/781/781013.jpg);		
+		}
+	{% endblock %}
+</style>
+

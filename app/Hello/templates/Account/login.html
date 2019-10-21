@@ -1,0 +1,64 @@
+{% extends 'Account/staff_base.html' %}
+{% block body %}
+
+	<div class="update_body">
+		<h1>Enter Details to Login</h1>
+		<form method="POST" >
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td><label for="captcha" class="captcha btn btn-outline-dark btn-lg">Email</label></td>
+					<td><input class="input" type="email" name="email"  required></td>
+				</tr>
+				<tr>
+					<td><label for="captcha" class="captcha btn btn-outline-dark btn-lg">Password</label></td>
+					<td><input class="input" type="password" name="password"  required></td>
+				</tr>
+
+			</table>
+			<button type="submit" class="submit btn btn-success btn-outline-dark btn-lg" value="value" name="superuser">Log in</button>
+			<h1 class="error">{{error}}</h1>
+		</form>
+	</div>
+{% endblock %}
+<style type="text/css">
+	{% block styling %}
+
+		.update_body{
+			width: 100%;
+			max-width: 100%;
+			position: absolute;
+			margin-left: 4.5rem;
+			top: 10%;
+			color: red;
+			font-weight: 70;
+			left:30%;
+			z-index: 1;
+		}
+		h1{
+			font-size: 3.5rem;
+			text-decoration: underline;
+			color: blue;
+			margin-left: 1rem;
+		}
+		.input{
+			font-size: 2rem;
+		}
+		.captcha{
+			font-size: 2rem;
+			margin:1rem;
+		}
+		.submit{
+			font-size: 1.8rem;
+			margin:1rem;
+
+		}
+		.home-inner{
+			background-image: url(http://sfwallpaper.com/images/free-ultra-hd-wallpapers-10.jpg);		
+		}
+		.error{
+			color: red;
+		}
+	{% endblock %}
+</style>
+

@@ -1,0 +1,37 @@
+{% extends 'Account/base.html' %}
+{% block body %}
+	<div class="update_body">
+		<h1>You are about to delete attendance of {{data.first_name}} {{data.last_name}} on date {{user.date}}</h1>
+		<h2>Prese Delete to Confirm or Home to Exit</h2>
+		<form method="POST">
+			{% csrf_token %}
+			<button type="submit" class="submit btn btn-danger btn-outline-light btn-lg" value="Select" >Delete</button>
+		</form>
+		<h1 id='errpython mor'>{{error}}</h1>
+	</div>
+{% endblock %}
+<style type="text/css">
+	{% block styling %}
+		.update_body{
+			width: 100%;
+			max-width: 100%;
+			position: absolute;
+			margin-left: 4.5rem;
+			top: 7%;
+			color: red;
+			font-weight: 70;
+			
+			z-index: 1;
+		}
+		.submit{
+			font-size: 1.8rem;
+			margin-top: 1rem;
+			margin-right:  1rem;
+
+		}
+		.home-inner{
+			background-image: url(https://wonderfulengineering.com/wp-content/uploads/2014/10/time-wallpaper-14.jpg);		
+		}
+	{% endblock %}
+</style>
+

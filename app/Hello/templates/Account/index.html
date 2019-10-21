@@ -1,0 +1,66 @@
+{% extends 'Account/base.html' %}
+{% block body %}
+	<div class="index_body">
+		<a href="{% url 'create_user' %}" class="index_button btn-success btn btn-outline-light btn-lg">
+			<span class="glyphicon-plus"></span>
+			Add User
+		</a>
+		<br>
+		{% for user in data %}
+			<table>
+				<tr>
+					<td><a href="{% url 'admin_attendance' user.id %}" class="user_list btn btn-outline-light btn-lg">{{user.first_name}} {{user.last_name}}</a></td>
+					<td>
+						{% if user.superuser %}
+							<h2 class="superuser btn btn-outline-dark btn-lg">Super User </h2>
+						{% else %}
+							<h2 class="Staff btn btn-outline-dark btn-lg">Staff</h2>
+						{% endif %}
+					</td>
+				</tr>
+			</table>
+		{% endfor %}
+	</div>
+{% endblock %}
+<style type="text/css">
+	{% block styling %}
+		.superuser{
+			color: green;
+			font-size: 2rem;
+			margin: 1rem;
+			background-color: lightcyan;
+		}
+		.Staff{
+			background-color: lightcyan;
+			color: red;
+			font-size: 2rem;
+			margin:1rem;
+		}
+		.user_list{
+			font-size: 2rem;
+			margin: 1rem;
+			margin-left: 0rem;
+			background-color: lightyellow;
+			color: black;
+
+		}
+		.index_body{
+			width: 100%;
+			max-width: 100%;
+			position: absolute;
+			margin-left: 4.5rem;
+			top: 7%;
+			color: red;
+			font-weight: 70;
+			
+			z-index: 1;
+		}
+		.index_button{
+			margin-left: 0rem;
+		}
+		.home-inner{
+			background-image: url(http://sfwallpaper.com/images/8k-ultra-hd-wallpaper-4.jpg);
+		}
+	{% endblock %}
+</style>
+

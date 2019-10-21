@@ -1,0 +1,91 @@
+{% extends 'Account/staff_base.html' %}
+{% block body %}
+	<div class="attendance_body">
+		<a href="{% url 'login' %}" class="logout btn-danger btn btn-outline-light btn-lg">Logout</a>
+		<h1 class="attendance-text-1">{{data.first_name}} {{data.last_name}}</h1>
+		<form method="POST" >
+			{% csrf_token %}
+
+			<table>
+				<tr>
+					<td><input class="input" type="date" name="date1" id="date1" required></td>
+					<td><input class="input" type="date" name="date2" id="date2" required></td>
+					<button class="btn btn-success submit btn-outline-light btn-lg" >Search</button>
+				</tr>
+			</table>
+		</form>
+		<table >
+			{% for i,k,a in list1 %}
+				<tr>
+					<td>
+						<a 	href="#" class="attendance_list_button btn btn-outline-light btn-lg">
+							{{i}}
+						</a>
+						
+					</td>
+					<td>
+						{% if a %}
+							<h1 class="attendance_status_present btn btn-outline-light btn-lg"> - Present</h1>
+						{% else %}
+							<h1 class="attendance_status_absent btn btn-outline-light btn-lg"> - Absent</h1>
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+{% endblock %}
+<style type="text/css">
+	{% block styling %}
+		.attendance_body{
+			width: 100%;
+			max-width: 100%;
+			position: absolute;
+			margin-left: 4.5rem;
+			top: 0%;
+			color: red;
+			font-weight: 70;
+			left:0rem;
+			z-index: 1;
+		}
+		.attendance_status_present{
+			color: green;
+			font-size: 1.5rem;
+			margin-left: 1rem;
+			margin-top: 1rem; 
+			background-color: moccasin;
+		}
+		.attendance_status_absent{
+			color: red;
+			margin-top: 1rem;
+			margin-left: 1rem;
+			font-size: 1.5rem;
+			background-color: lightyellow;
+		}
+		h1{
+			font-size: 3.5rem;
+			text-decoration: underline;
+			color: white;
+			margin-left: 0rem;
+		}
+		.input{
+			font-size: 2rem;
+		}
+		.attendance_list_button{
+			font-size: 1.5rem;
+			margin-top:1rem;
+			margin-left: 0rem;
+		}
+		.submit{
+			font-size: 1.8rem;
+			margin:1rem;
+			margin-left: 0rem;
+
+		}
+		.home-inner{
+			background-image: url(http://sfwallpaper.com/images/free-ultra-hd-wallpapers-25.jpg);		
+		}
+	{% endblock %}
+</style>
+

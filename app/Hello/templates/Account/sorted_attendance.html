@@ -1,0 +1,106 @@
+{% extends 'Account/base.html' %}
+{% block body %}
+	<div class="attendance_body">
+		<h1 class="attendance_text_1">{{data.first_name}} {{data.last_name}}</h1>
+		<a href="{% url 'add_attendance' data.id %}" class="attendance_button btn btn-outline-light btn-lg">
+			<span class="glyphicon-plus"></span>
+			Add Attendance
+		</a>
+		
+		<a href="{% url 'update_user' data.id %}" class="attendance_button btn btn-outline-light btn-lg">
+			Edit User Details
+		</a>
+		<br>
+		<form method="POST" >
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td><input class="input Search" type="date" name="date1" id="date1" required></td>
+					<td><input class="input Search" type="date" name="date2" id="date2" required></td>
+					<button class="btn btn-success Search submit btn-outline-light btn-lg" >Search</button>
+				</tr>
+			</table>
+
+		</form>
+		<table >
+			
+				
+			{% for i,k,a in list1 %}
+				<tr>
+					<td>
+						<a 	href="" class="attendance_list_button btn btn-outline-light btn-lg">
+							{{i}}
+						</a>
+						
+					</td>
+					<td>
+						{% if a %}
+							<h1 class="attendance_status_present btn btn-outline-light btn-lg"> - Present</h1>
+						{% else %}
+							<h1 class="attendance_status_absent btn btn-outline-light btn-lg"> - Absent</h1>
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+				
+			
+		</table>
+	</div>
+{% endblock %}
+<style type="text/css">
+	{% block styling %}
+		.attendance_list_button{
+			font-size: 1.8rem;
+			margin-top: 1rem; 
+		}
+		.attendance_status_present{
+			color: blue;
+			font-size: 2rem;
+			margin-left: 1rem;
+			margin-top: 1rem; 
+			background-color: moccasin;
+		}
+		.attendance_status_absent{
+			color: red;
+			margin-top: 1rem;
+			margin-left: 1rem;
+			font-size: 2rem;
+			background-color: lightyellow;
+		}
+		.Search{
+			font-size: 1.6rem;
+			margin-top: 1.5rem; 
+		}
+		.attendance_text_1{
+			text-decoration: underline;
+			font-size: 3rem;
+			color: black;
+			
+		}
+		.attendance_button{
+			font-size: 1.8rem;
+			margin-top: 1rem;
+			margin-right:  1rem;
+
+		}
+		.attendance_body{
+			width: 100%;
+			max-width: 100%;
+			position: absolute;
+			margin-left: 4.5rem;
+			top: 7%;
+			color: red;
+			font-weight: 70;
+			
+			z-index: 1;
+		}
+		.home-inner{
+			background-image: url(https://images2.alphacoders.com/602/602258.jpg);
+			background-repeat: no-repeat;
+			
+		}
+	{% endblock %}
+</style>
+
+
+

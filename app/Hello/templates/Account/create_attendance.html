@@ -1,0 +1,72 @@
+{% extends 'Account/base.html' %}
+{% block body %}
+	<div class="create_attendance_body">
+		<h1 class="attendance_text_1">{{data.first_name}} {{data.last_name}}</h1>
+		<form method="POST">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td><label for="Money" class="text attendance_button btn btn-outline-dark btn-lg">Date </label></td>
+					<td><input class="input" type="date" name="date" required></td>
+				</tr>
+				<tr>
+					<td><label for="Remarks" class="text attendance_button btn btn-outline-dark btn-lg">Status</label></td>
+					<td>
+						<select name="status" class="input">
+							<option value="Present">Present</option>
+							<option value="Absent">Absent</option>
+						</select>
+					</td>
+				</tr>
+
+				
+			</table>
+			<button type="submit" class="submit attendance_list_button btn btn-success btn-outline-light btn-lg" value="Select" >Upload</button>
+		</form>
+		<h1 id='errpython mor'>{{error}}</h1>
+	</div>
+{% endblock %}
+<style type="text/css">
+	{% block styling %}
+		.input{
+			font-size: 1.8rem;
+			margin-top: 1rem;
+		}
+		.attendance_list_button{
+			font-size: 1.8rem;
+			margin-top: 1rem; 
+		}
+		
+		.Search{
+			font-size: 1.6rem;
+			margin-top: 1.5rem; 
+		}
+		.attendance_text_1{
+			text-decoration: underline;
+			font-size: 2.5rem;
+			color: black;
+			
+		}
+		.attendance_button{
+			font-size: 1.8rem;
+			margin-top: 1rem;
+			margin-right:  1rem;
+
+		}
+		.create_attendance_body{
+			width: 100%;
+			max-width: 100%;
+			position: absolute;
+			margin-left: 4.5rem;
+			top: 7%;
+			color: red;
+			font-weight: 70;
+			
+			z-index: 1;
+		}
+		.home-inner{
+			background-image: url(https://wonderfulengineering.com/wp-content/uploads/2014/10/time-wallpaper-3.jpg);		
+		}
+	{% endblock %}
+</style>
+
